@@ -1,3 +1,4 @@
+
 // -------------------------------------------------------------------------
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,7 +22,7 @@ class SortComparison {
 	 *
 	 */
 	static double[] insertionSort(double a[]) {
-		if(a.length<=1){
+		if (a.length <= 1) {
 			return a;
 		}
 		double x;
@@ -34,8 +35,8 @@ class SortComparison {
 				}
 			}
 		}
-		for(int i=0; i<a.length;i++){
-			System.out.println("a["+i+"] = "+ a[i]+"y");
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a[" + i + "] = " + a[i] + "y");
 		}
 		return a;
 	}// end insertionsort
@@ -50,7 +51,7 @@ class SortComparison {
 	 *
 	 */
 	static double[] selectionSort(double a[]) {
-		if(a.length<=1){
+		if (a.length <= 1) {
 			return a;
 		}
 		// One by one move boundary of unsorted subarray
@@ -66,8 +67,8 @@ class SortComparison {
 			a[min_idx] = a[i];
 			a[i] = temp;
 		}
-		for(int i=0; i<a.length;i++){
-			System.out.println("a["+i+"] = "+ a[i]+"z");
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a[" + i + "] = " + a[i] + "z");
 		}
 		return a;
 	}// end
@@ -83,16 +84,16 @@ class SortComparison {
 	 *
 	 */
 	static double[] quickSort(double a[]) {
-		if(a.length<=1){
+		if (a.length <= 1) {
 			return a;
 		}
-		quickRecursive(a, 0, a.length-1);
+		quickRecursive(a, 0, a.length - 1);
 
-		for(int i=0; i<a.length;i++){
-			System.out.println("a["+i+"] = "+ a[i]+"x");
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a[" + i + "] = " + a[i] + "x");
 		}
 		return a;
-		
+
 	}// end quicksort
 
 	/**
@@ -115,11 +116,14 @@ class SortComparison {
 	 */
 
 	static double[] mergeSortIterative(double a[]) {
-		if(a.length<=1){
+		if (a.length <= 1) {
 			return a;
+		} 
+		mergeSort(a);
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a[" + i + "] = " + a[i] + "v");
 		}
-		// todo: implement the sort
-
+		return a;
 	}// end mergesortIterative
 
 	/**
@@ -131,29 +135,33 @@ class SortComparison {
 	 * @return after the method returns, the array must be in ascending sorted
 	 *         order.
 	 */
-	
-	/*static double[] mergeSortRecursive(double a[]) {
 
-		// todo: implement the sort
+	static double[] mergeSortRecursive(double a[]) {
 
+		double[] aux = new double[a.length];
+		mergeSort(a, aux, 0, a.length - 1);
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a[" + i + "] = " + a[i] + "w");
+		}
+		return a;
 	}// end mergeSortRecursive
-*/
+
 	public static void main(String[] args) {
 
 		// todo: do experiments as per assignment instructions
 	}
-	
-		//[3,6,1]  lo =0; hi=2;
-	 static int partition(double[] numbers, int lo, int hi) {
+
+	// [3,6,1] lo =0; hi=2;
+	static int partition(double[] numbers, int lo, int hi) {
 		int i = lo;
 		int j = hi + 1;
-		double pivot = numbers[lo];  //pivot=3, i=0, j=3
+		double pivot = numbers[lo]; // pivot=3, i=0, j=3
 		while (true) {
 			while ((numbers[++i] < pivot)) { // while numbers<pivot
 				if (i == hi)
 					break;
 			}
-			while (pivot<(numbers[--j])) {
+			while (pivot < (numbers[--j])) {
 				if (j == lo)
 					break;
 			}
@@ -168,12 +176,49 @@ class SortComparison {
 		return j;
 	}
 
-	 public static void quickRecursive(double[] a,int lo,int hi){
-		 	if (hi<=lo){
-		 		return;
-		 	}
-			int pivot = partition(a, lo, hi);
-			quickRecursive(a, lo, pivot-1);
-			quickRecursive(a, pivot+1, hi);
-	 }
+	public static void mergeSort(double[] a, double[] aux, int lo, int hi) {
+		if (hi <= lo) {
+			return;
+		}
+		int mid = lo + ((hi - lo) / 2);
+		mergeSort(a, aux, lo, mid);
+		mergeSort(a, aux, mid + 1, hi);
+		merge(a, aux, lo, mid, hi);
+	}
+	public static void mergeSort(double[] a){
+		double[] aux = new double[a.length];
+		for (int i=1; i<a.length;i++){
+			for (int lo=0; lo<a.length-i; lo+=i+i){
+				merge(a, aux, lo, lo+i-1, Math.min(lo+i+i-1, a.length-1));
+			}
+		}
+
+	}
+	public static void merge(double[] a, double[] aux, int lo, int mid, int hi) {
+		for (int k = lo; k <= hi; k++) {
+			aux[k] = a[k];
+		}
+		int i = lo;
+		int j = mid + 1;
+		for (int k = lo; k <= hi; k++) {
+			if (i > mid) {
+				a[k] = aux[j++];
+			} else if (j > hi) {
+				a[k] = aux[i++];
+			} else if ((aux[j] < aux[i])) {
+				a[k] = aux[j++];
+			} else {
+				a[k] = aux[i++];
+			}
+		}
+	}
+
+	public static void quickRecursive(double[] a, int lo, int hi) {
+		if (hi <= lo) {
+			return;
+		}
+		int pivot = partition(a, lo, hi);
+		quickRecursive(a, lo, pivot - 1);
+		quickRecursive(a, pivot + 1, hi);
+	}
 }// end class
