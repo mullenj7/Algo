@@ -1,4 +1,6 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,8 +33,33 @@ public class SortComparisonTest
     public void testEmpty()
     {
     }
-
-
+    
+    @Test
+    public void testQuick(){
+    	SortComparison tester = new SortComparison();
+    	double a[] = new double[]{4,7,1,10,9,14,29,21,50,19,23};
+    	double b[] = new double[]{1,4,7,9,10,14,19,21,23,29,50};
+    	
+    	assertTrue(Arrays.equals(tester.insertionSort(a),b));
+    	
+    }
+    
+    @Test
+    public void testInsertion(){
+    	SortComparison tester = new SortComparison();
+    	double a[] = new double[]{4,7,1,10,9,14,29,21,50,19,23};
+    	double b[] = new double[]{1,4,7,9,10,14,19,21,23,29,50};
+    	
+    	assertTrue(Arrays.equals(tester.insertionSort(a),b));
+    }
+    @Test
+    public void testSelection(){
+    	SortComparison tester = new SortComparison();
+    	double a[] = new double[]{4,7,1,10,9,14,29,21,50,19,23};
+    	double b[] = new double[]{1,4,7,9,10,14,19,21,23,29,50};
+    	
+    	assertTrue(Arrays.equals(tester.insertionSort(a),b));
+    }
     // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
     // be executed at least once from at least one test.
 
