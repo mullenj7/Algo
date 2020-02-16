@@ -35,9 +35,9 @@ class SortComparison {
 				}
 			}
 		}
-		for (int i = 0; i < a.length; i++) {
+		/*for (int i = 0; i < a.length; i++) {
 			System.out.println("a[" + i + "] = " + a[i] + "y");
-		}
+		}*/
 		return a;
 	}// end insertionsort
 
@@ -67,9 +67,9 @@ class SortComparison {
 			a[min_idx] = a[i];
 			a[i] = temp;
 		}
-		for (int i = 0; i < a.length; i++) {
+		/*for (int i = 0; i < a.length; i++) {
 			System.out.println("a[" + i + "] = " + a[i] + "z");
-		}
+		}*/
 		return a;
 	}// end
 		// selectionsort
@@ -89,9 +89,9 @@ class SortComparison {
 		}
 		quickRecursive(a, 0, a.length - 1);
 
-		for (int i = 0; i < a.length; i++) {
+		/*for (int i = 0; i < a.length; i++) {
 			System.out.println("a[" + i + "] = " + a[i] + "x");
-		}
+		}*/
 		return a;
 
 	}// end quicksort
@@ -120,9 +120,9 @@ class SortComparison {
 			return a;
 		} 
 		mergeSort(a);
-		for (int i = 0; i < a.length; i++) {
+		/*for (int i = 0; i < a.length; i++) {
 			System.out.println("a[" + i + "] = " + a[i] + "v");
-		}
+		}*/
 		return a;
 	}// end mergesortIterative
 
@@ -140,9 +140,9 @@ class SortComparison {
 
 		double[] aux = new double[a.length];
 		mergeSort(a, aux, 0, a.length - 1);
-		for (int i = 0; i < a.length; i++) {
+		/*for (int i = 0; i < a.length; i++) {
 			System.out.println("a[" + i + "] = " + a[i] + "w");
-		}
+		}*/
 		return a;
 	}// end mergeSortRecursive
 
