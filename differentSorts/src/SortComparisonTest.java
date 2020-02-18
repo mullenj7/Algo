@@ -59,6 +59,16 @@ public class SortComparisonTest {
 	 */
 	@Test
 	public void testEmpty() {
+		SortComparison tester = new SortComparison();
+		double a[] = new double[0];
+		assertTrue(Arrays.equals(tester.quickSort(a), a));
+		assertTrue(Arrays.equals(tester.insertionSort(a), a));
+		assertTrue(Arrays.equals(tester.selectionSort(a), a));
+		assertTrue(Arrays.equals(tester.mergeSortRecursive(a), a));
+		assertTrue(Arrays.equals(tester.mergeSortIterative(a), a));
+
+		
+		
 	}
 
 	@Test
