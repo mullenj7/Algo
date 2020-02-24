@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * This class contains static methods that implementing sorting of an array of
  * numbers using different sort algorithms.
  *
- * @author
+ * @author jason mullen 18320585
  * @version HT 2020
  */
 
