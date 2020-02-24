@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4;
 /**
  * Test class for SortComparison.java
  *
- * @author
+ * @author jason mullen 18320585
  * @version HT 2020
  * 
  *          Running Times Average Table:
