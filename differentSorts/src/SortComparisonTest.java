@@ -27,21 +27,36 @@ import org.junit.runners.JUnit4;
  1000 sorted			5724133ns	4833066ns	5331333ns	5855266ns		786833ns
  *          
  * 
- *          a. Which of the sorting algorithms does the order of input have an
- *          impact on? Why?
+ *          a. --- Which of the sorting algorithms does the order of input have an
+ *          impact on? Why?-- Insert, as it starts from first element and waits until it finds an element less than etc, so for example
+ *          reverse orderer input it would constantly be encountering elements less than and having to change indexes.
+ *          Selection as it runs from left to right in each iteration finding the smallest element and swapping, so once again
+ *          for example with reverse ordered it would constantly finding smaller elements.
+ *          
  * 
- *          b. Which algorithm has the biggest difference between the best and
+ *          b. --- Which algorithm has the biggest difference between the best and
  *          worst performance, based on the type of input, for the input of size
- *          1000? Why?
+ *          1000? Why? -- Insert as for the sorted input it wouldn't have to make any changes vs the reverse order input
+ *          with which it would have to make a change with every next element 
  * 
- *          c. Which algorithm has the best/worst scalability, i.e., the
+ *          c. --- Which algorithm has the best/worst scalability, i.e., the
  *          difference in performance time based on the input size? Please
- *          consider only input files with random order for this answer.
+ *          consider only input files with random order for this answer. -- Best: Insert as the percentage change from
+ *          10 to 1000 random is 0.08%.   Worst: mergeIterative as the percentage change from
+ *          10 to 1000 random is 0.45%.
  * 
- *          d. Did you observe any difference between iterative and recursive
- *          implementations of merge sort?
+ *          d. --- Did you observe any difference between iterative and recursive
+ *          implementations of merge sort? -- Iterative has lower run times with randomly ordered inputs, 
+ *          recursive has more stable run times for same size inputs that are ordered differently
  * 
- *          e. Which algorithm is the fastest for each of the 7 input files?
+ *          e. Which algorithm is the fastest for each of the 7 input files? --
+ *          	10 random: Insert
+ *          	100 random: mergeRecursive
+ *          	1000 random: mergeRecursive
+ *          	1000 few unique: mergeRecursive
+ *          	1000 nearly ordered: mergeRecursive
+ *          	1000 reverse order: mergeRecursive
+ *          	1000 sorted: mergeRecursive
  */
 @RunWith(JUnit4.class)
 public class SortComparisonTest {
